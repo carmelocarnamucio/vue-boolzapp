@@ -213,7 +213,6 @@ aside .chat-list {
 /*CONTENT CHAT*/
 .content-chat{
   padding: 10px 20px;
-  margin-bottom: 12px;
 }
 
 .sent {
@@ -224,13 +223,13 @@ aside .chat-list {
 
 .sent .message{
   background-color: #cbfbb3;
-  border-radius: 15px 15px 0 15px;
+  border-radius: 15px;
   padding: 10px 20px;
 }
 
 .received .message{
   background-color: white;
-  border-radius: 15px 15px 15px 0;
+  border-radius: 15px;
   padding: 10px 20px;
 }
 
