@@ -27,7 +27,12 @@ h4 {
   font-weight: 400;
 }
 
-/* LAYOUT */
+p {
+  font-size: 13px;
+  margin-top: 1px;
+  color: #aeabab;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -178,7 +183,7 @@ aside .chat-list {
   color: black;
 }
 
-/* MAIN */
+/* MAIN CHAT */
 .main-content .content-chat {
   flex-grow: 1;
   background-image: url(../img/mine.jpg);
@@ -199,4 +204,8 @@ aside .chat-list {
   border-radius: 5px;
   border: none;
   outline: none;
+}
+
+.fa-ellipsis-v{
+  margin-right: 10px;
 }
