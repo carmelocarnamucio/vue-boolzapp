@@ -6,56 +6,147 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
 
     <div id="app" class="container">
-
+      <!-- aside -->
       <aside>
-        <div class="header">
-
-        </div>
-
-          <div class="alert">
-
-          </div>
-
-          <input type="text" name="" value="">
-
-          <div class="chat-list">
-
-          </div>
-      </aside>
-      <main class="main-content">
-        <div class="header">
+        <div class="header pd-10">
           <div class="header-left">
-            <div class="user-top">
-            </div>
+            <a href="#"><div class="user-top">
+              <img src="img/avatar_io.jpg" alt="">
+            </div></a>
             <div class="label-left">
-              <h4>Michele</h4>
-              <small>Ultimo accesso oggi</small>
+              <h4>Nome Utente</h4>
             </div>
           </div>
 
           <div class="header-right">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-paperclip"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <a href="#"><i class="fas fa-circle-notch"></i></a>
+            <a href="#"><i class="fas fa-comment-alt"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
           </div>
         </div>
+
+          <div class="alert pd-10">
+            <div class="header">
+              <div class="header-left">
+                <div class="user-top">
+                  <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="label-left">
+                  <h4>Ricevi notifiche di nuovi messaggi</h4>
+                  <small><a class="grey" href="#">Attiva notifiche desktop</a></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- search -->
+          <div class="search">
+            <div class="search-tool grey">
+              <i class="fas fa-search"></i>
+            </div>
+            <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+          </div>
+          <!-- chat list -->
+          <div class="chat-list">
+            <ul>
+              <li>
+                <a href="#">
+                  <div class="header">
+                    <div class="header-left">
+                      <div class="user-top">
+                        <img src="img/avatar_1.jpg" alt="">
+                      </div>
+                      <div class="label-left">
+                        <h4>Michele</h4>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="header">
+                    <div class="header-left">
+                      <div class="user-top">
+                        <img src="img/avatar_2.jpg" alt="">
+                      </div>
+                      <div class="label-left">
+                        <h4>Fabio</h4>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="header">
+                    <div class="header-left">
+                      <div class="user-top">
+                        <img src="img/avatar_3.jpg" alt="">
+                      </div>
+                      <div class="label-left">
+                        <h4>Samuele</h4>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="header">
+                    <div class="header-left">
+                      <div class="user-top">
+                        <img src="img/avatar_6.jpg" alt="">
+                      </div>
+                      <div class="label-left">
+                        <h4>Luisa</h4>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+      </aside>
+      <!-- main chat -->
+      <main class="main-content">
+        <div class="header pd-10">
+          <div class="header-left">
+            <a href="#"><div class="user-top">
+            </div></a>
+            <div class="label-left">
+              <h4>Michele</h4>
+              <small class="grey">Ultimo accesso oggi alle 10.35</small>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-paperclip"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+          </div>
+        </div>
+
         <div class="content-chat">
 
         </div>
         <div class="footer-chat">
 
+            <a href="#"><i class="far fa-smile"></i></a>
+
+            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+
+            <a href="#"><i class="fas fa-microphone"></i></a>
+
         </div>
       </main>
 
-
     </div>
-    <script src="js/script.js"></script>
-
+  <script type="text/javascript" src="./js/script.js"></script>
   </body>
 </html>
