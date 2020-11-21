@@ -14,22 +14,14 @@ i {
   color: #b1b1b1;
 }
 
-/* Utilities */
-.pd-10 {
-  padding: 10px;
-}
-
-.grey {
-  color: #697376;
-}
-
 h4 {
   font-weight: 400;
+  font-size: 18px;
 }
 
 p {
-  font-size: 13px;
-  margin-top: 1px;
+  font-size: 14px;
+  margin-top: 10px;
   color: #aeabab;
 }
 
@@ -42,9 +34,18 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/* UTILITIES */
+.pd-10 {
+  padding: 10px;
+}
+
+.grey {
+  color: #697376;
+}
+
 .container {
   display: flex;
-  width: 80%;
+  width: 90%;
   min-width: 900px;
   height: 90vh;
 }
@@ -71,8 +72,8 @@ body {
 
 .header-left .user-top {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   margin-right: 12px;
   border-radius: 50%;
   background: red;
@@ -88,8 +89,8 @@ body {
 }
 
 .chat-list .header .header-left .user-top {
-  width: 45px;
-  height: 45px;
+  width: 70px;
+  height: 70px;
 }
 
 .main-content {
@@ -125,6 +126,8 @@ aside .alert {
 
 .alert .header .header-left .user-top {
   background: #fff;
+  width: 45px;
+  height: 45px;
 }
 
 .alert .header .header-left .user-top i {
@@ -155,7 +158,8 @@ aside .alert {
 
 aside input {
   width: 100%;
-  height: 40px;
+  height: 50px;
+  font-size: 15px;
   border: none;
   outline: none;
 }
@@ -166,6 +170,7 @@ aside .chat-list {
   justify-content: flex-start;
   flex-grow: 1;
   background: #fff;
+  overflow-y: auto;
 }
 
 .chat-list ul li{
@@ -190,7 +195,7 @@ aside .chat-list {
 }
 
 .main-content .footer-chat {
-  height: 8%;
+  height: 10%;
   background: #f4eeea;
 }
 
@@ -202,6 +207,7 @@ aside .chat-list {
   width: 80%;
   padding: 10px;
   border-radius: 5px;
+  font-size: 15px;
   border: none;
   outline: none;
 }
