@@ -12,15 +12,16 @@
   <body>
 
     <div id="app" class="container">
-      <!-- aside -->
+      <!-- ASIDE -->
       <aside>
+        <!-- Header -->
         <div class="header pd-10">
           <div class="header-left">
             <a href="#"><div class="user-top">
               <img src="img/avatar_io.jpg" alt="">
             </div></a>
             <div class="label-left">
-              <h4>Nome Utente</h4>
+              <h3>Nome Utente</h3>
             </div>
           </div>
 
@@ -30,7 +31,7 @@
             <a href="#"><i class="fas fa-ellipsis-v"></i></a>
           </div>
         </div>
-
+          <!-- Alert Notifications -->
           <div class="alert pd-10">
             <div class="header">
               <div class="header-left">
@@ -44,89 +45,55 @@
               </div>
             </div>
           </div>
-          <!-- search -->
+          <!-- Search -->
           <div class="search">
             <div class="search-tool grey">
-              <i class="fas fa-search"></i>
+              <a href="#">
+                <i class="fas fa-search"></i>
+              </a>
             </div>
             <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
           </div>
-          <!-- chat list -->
+          <!-- Chat-List -->
           <div class="chat-list">
             <ul>
-              <li>
+
+              <li v-for="(contact,i) in contacts" @click="showChat(i)" :class="{'selected': i===selected}">
                 <a href="#">
                   <div class="header">
                     <div class="header-left">
                       <div class="user-top">
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img :src="contact.img" alt="">
                       </div>
                       <div class="label-left">
-                        <h4>Michele</h4>
-                        <p>ok...</p>
+                        <h4>{{contact.name}}</h4>
+                        <p>{{contact.chat[contact.chat.length-1].message}}</p>
                       </div>
+                    </div>
+                    <div class="prev-time">
+                      {{contact.chat[contact.chat.length-1].date}}
                     </div>
                   </div>
                 </a>
               </li>
-              <li>
-                <a href="#">
-                  <div class="header">
-                    <div class="header-left">
-                      <div class="user-top">
-                        <img src="img/avatar_2.jpg" alt="">
-                      </div>
-                      <div class="label-left">
-                        <h4>Fabio</h4>
-                        <p>a domani</p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="header">
-                    <div class="header-left">
-                      <div class="user-top">
-                        <img src="img/avatar_3.jpg" alt="">
-                      </div>
-                      <div class="label-left">
-                        <h4>Samuele</h4>
-                        <p>Non sapevo nulla!</p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="header">
-                    <div class="header-left">
-                      <div class="user-top">
-                        <img src="img/avatar_6.jpg" alt="">
-                      </div>
-                      <div class="label-left">
-                        <h4>Luisa</h4>
-                        <p>ok</p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
+
             </ul>
           </div>
       </aside>
-      <!-- main chat -->
+      <!-- MAIN CHAT -->
       <main class="main-content">
         <div class="header pd-10">
           <div class="header-left">
-            <a href="#"><div class="user-top">
-              <img src="img/avatar_6.jpg" alt="">
-            </div></a>
+
+            <a href="#">
+              <div class="user-top">
+                  <img :src="contacts[selected].img" alt="">
+              </div>
+            </a>
+
             <div class="label-left">
-              <h4>Luisa</h4>
-              <small class="grey">Ultimo accesso oggi alle 10.35</small>
+              <h3>{{contacts[selected].name}}</h3>
+              <small class="grey">Ultimo accesso oggi alle {{contacts[selected].chat[contacts[selected].chat.length-1].date}}</small>
             </div>
           </div>
 
@@ -136,46 +103,43 @@
             <a href="#"><i class="fas fa-ellipsis-v"></i></a>
           </div>
         </div>
-          <!-- content chat -->
+
+        <!-- content chat -->
         <div class="content-chat">
 
-          <div class="sent">
-              <div class="message">
-                <div class="msg-text">
-                  Lo sai che ha aperto una nuova pizzeria?
-                </div>
+          <div v-for="message in contacts[selected].chat" :class="message.status==='out' ? 'sent' : 'received'">
+
+            <div class="message">
+
+              <div class="msg-text">
+                {{message.message}}
               </div>
+
+              <div class="msg-time">
+                {{message.date}}
+              </div>
+
             </div>
 
-            <div class="received">
-              <div class="message">
-                <div class="msg-text">
-                  Si, ma preferirei andare al cinema
-                </div>
-              </div>
-            </div>
+          </div>
 
-            <div class="sent">
-              <div class="message">
-                <div class="msg-text">
-                  Ok
-                </div>
-              </div>
-            </div>
+          </div>
 
-        </div>
+        <!-- Footer -->
         <div class="footer-chat">
-
-            <a href="#"><i class="far fa-smile"></i></a>
+            <a href="#">
+              <i class="far fa-smile grey"></i>
+            </a>
 
             <input type="text" name="" value="" placeholder="Scrivi un messaggio">
 
-            <a href="#"><i class="fas fa-microphone"></i></a>
-
+            <a href="#">
+              <i class="fas fa-microphone grey"></i>
+            </a>
         </div>
       </main>
-
     </div>
+
   <script type="text/javascript" src="./js/script.js"></script>
   </body>
 </html>
