@@ -1,12 +1,8 @@
-/* GENERAL STYLE */
+/* General */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-a {
-  color: #697376;
 }
 
 i {
@@ -23,38 +19,23 @@ i {
   color: #697376;
 }
 
-div .received .message {
-  background: #fff;
-}
-
-div .sent .message {
-  background: #cdfab6;
-}
-
-/* Typhography */
 h3, h4 {
   font-weight: 400;
+  margin-bottom: 8px;
 }
 
-/* GENERAL - LAYOUT */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(
-    to bottom,
-    #009688 0%,
-    #009688 15%,
-    #d2dbdc  15%,
-    #d2dbdc 100%
-  );
+  background-image: linear-gradient(#009688 0%, #009688 15%, #d2dbdc  15%, #d2dbdc 100%);
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 .container {
   display: flex;
-  width: 80%;
+  width: 90%;
   min-width: 900px;
   height: 90vh;
 }
@@ -83,8 +64,8 @@ body {
 
 .header-left .user-top {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-right: 12px;
   border-radius: 50%;
   overflow: hidden;
@@ -99,10 +80,9 @@ body {
 }
 
 .chat-list .header .header-left .user-top {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
-
 /* Aside sidebar */
 aside {
   display: flex;
@@ -127,8 +107,6 @@ aside {
   padding: 0 20px;
 }
 
-/* SPECIFIC SECTIONS LAYOUT */
-/* ASIDE */
 aside .alert {
   display: flex;
   justify-content: flex-start;
@@ -218,7 +196,7 @@ aside .chat-list {
   font-size: 15px;
 }
 
-/* MAIN */
+/* Main */
 .main-content .content-chat {
   display: flex;
   flex-direction: column;
