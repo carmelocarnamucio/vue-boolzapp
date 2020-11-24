@@ -131,7 +131,7 @@
               <i class="far fa-smile grey"></i>
             </a>
 
-            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input v-model="newMessage" @keypress.enter="pushMess" type="text" placeholder="Scrivi un messaggio">
 
             <a href="#">
               <i class="fas fa-microphone grey"></i>
