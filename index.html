@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Boolzap</title>
+    <title>BoolzApp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;700&display=swap" rel="stylesheet">
@@ -134,7 +134,7 @@
             <input v-model="newMessage" @keypress.enter="pushMess" type="text" placeholder="Scrivi un messaggio">
 
             <a href="#">
-              <i class="fas fa-microphone grey"></i>
+              <i class="fas fa-microphone grey" @click="pushMess"></i>
             </a>
         </div>
       </main>
