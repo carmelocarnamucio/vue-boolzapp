@@ -232,28 +232,29 @@ aside .chat-list {
 }
 
 .content-chat .message {
-  min-width: 300px;
-  max-width: 500px;
+  min-width: 30%;
+  max-width: 50%;
   padding: 10px 20px;
   margin-bottom: 12px;
+  border-radius: 15px;
   overflow: hidden;
 }
 
 .content-chat .sent .message {
   background-color: #cbfbb3;
-  border-radius: 15px;
 }
 
 .content-chat .received .message {
   background-color: white;
-  border-radius: 15px;
 }
 
 .content-chat .msg-time {
+  position: relative;
+  top: 9px;
+  left: 10px;
   color: silver;
   text-align: right;
   font-size: 12px;
-  margin-top: 5px;
 }
 
 .main-content .footer-chat input {
