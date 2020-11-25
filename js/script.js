@@ -93,10 +93,12 @@ var app = new Vue({
     },
 
   methods: {
+
     //funzione che mostra la chat selezionata
     showChat: function(i) {
       this.selected = i
     },
+
     //funzione che pusha un nuovo messaggio nella chat selezionata
     pushMess: function() {
       if (this.newMessage != "") {
@@ -104,13 +106,24 @@ var app = new Vue({
         this.contacts[this.selected].chat.push(messageNew);
         this.newMessage = "";
         setTimeout(this.autoReply, 1000);
+        this.moveLastChat();
+        this.selected = 0;
       }
     },
+
     //funzione che restituisce una risposta automatica ad un nuovo messaggio
     autoReply: function() {
       let message ={message: "ok", date:this.dataTime (), status: "in"};
       this.contacts[this.selected].chat.push(message);
     },
+
+    //funzione per mettere in cima alla lista l'ultima chat utilizzata
+    moveLastChat: function() {
+      let move = this.contacts[this.selected]
+      this.contacts.splice(this.selected, 1)
+      this.contacts.unshift(move)
+    },
+
     //funzione ricerca contatti
     searchContact: function() {
         for (let i = 0; i < this.contacts.length; i++) {
@@ -121,6 +134,7 @@ var app = new Vue({
           }
         }
      },
+
     //funzione per avere data attuale
     dataTime: function () {
       let today = new Date();
@@ -129,8 +143,8 @@ var app = new Vue({
       let dateTime = date+' '+time;
       return dateTime;
     }
-
   },
+
   //scroll automatico ad ogni nuovo messaggio
   updated: function () {
     let container = document.querySelector(".content-chat");
