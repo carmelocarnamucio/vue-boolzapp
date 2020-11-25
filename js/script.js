@@ -3,11 +3,13 @@ var app = new Vue({
 
   data: {
     newMessage: "",
+    search: "",
     selected: 0,
     contacts: [
       {
         name: "Michele",
         img: "img/avatar_1.jpg",
+        visible: true,
         chat: [
          {
            message: 'Hai portato a spasso il cane?',
@@ -29,6 +31,7 @@ var app = new Vue({
       {
         name: "Fabio",
         img: "img/avatar_2.jpg",
+        visible: true,
         chat: [
           {
             message: "Ciao come stai?",
@@ -50,6 +53,7 @@ var app = new Vue({
       {
         name: "Samuele",
         img: "img/avatar_3.jpg",
+        visible: true,
         chat: [
            {
              message: "La Marianna va in campagna?",
@@ -71,6 +75,7 @@ var app = new Vue({
         {
           name: "Luisa",
           img: "img/avatar_6.jpg",
+          visible: true,
           chat: [
             {
               message: "Lo sai che ha aperto una nuova pizzeria?",
@@ -105,7 +110,16 @@ var app = new Vue({
     autoReply: function() {
       let message ={message: "ok", date:"15:30", status: "in"};
       this.contacts[this.selected].chat.push(message);
-    }
+    },
 
+    searchContact: function() {
+        for (let i = 0; i < this.contacts.length; i++) {
+          if(this.contacts[i].name.toLowerCase().includes(this.search.toLowerCase())) {
+            this.contacts[i].visible = true;
+          } else {
+            this.contacts[i].visible = false;
+          }
+        }
+     }
   }
 })
