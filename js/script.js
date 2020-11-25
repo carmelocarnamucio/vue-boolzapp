@@ -121,13 +121,20 @@ var app = new Vue({
           }
         }
      },
-     //funzione per avere data attuale
-     dataTime: function () {
-     let today = new Date();
-     let date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-     let dateTime = date+' '+time;
-     return dateTime;
-   },
+    //funzione per avere data attuale
+    dataTime: function () {
+      let today = new Date();
+      let date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+      let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let dateTime = date+' '+time;
+      return dateTime;
+    }
+
+  },
+  //scroll automatico ad ogni nuovo messaggio
+  updated: function () {
+    let container = document.querySelector(".content-chat");
+    let scrollHeight = container.scrollHeight;
+    container.scrollTop = scrollHeight;
   }
 })
