@@ -12,7 +12,6 @@
   <body>
 
     <div id="app" class="container">
-      <!-- ASIDE -->
       <aside>
         <!-- Header -->
         <div class="header pd-10">
@@ -24,7 +23,6 @@
               <h3>Nome Utente</h3>
             </div>
           </div>
-
           <div class="header-right">
             <a href="#"><i class="fas fa-circle-notch"></i></a>
             <a href="#"><i class="fas fa-comment-alt"></i></a>
@@ -32,13 +30,13 @@
           </div>
         </div>
           <!-- Alert Notifications -->
-          <div class="alert pd-10">
+          <div v-show="showMe" class="alert pd-10">
             <div class="header">
               <div class="header-left">
                 <div class="user-top">
                   <i class="fas fa-bell-slash"></i>
                 </div>
-                <div class="label-left">
+                <div @click="showMe = !showMe" class="label-left">
                   <h4>Ricevi notifiche di nuovi messaggi</h4>
                   <small><a class="grey" href="#">Attiva notifiche desktop</a></small>
                 </div>
@@ -57,10 +55,9 @@
           <!-- Chat-List -->
           <div class="chat-list">
             <ul>
-
               <li v-for="(contact,i) in contacts" @click="showChat(i)" :class="{'selected': i===selected}" v-show="contact.visible">
                 <a href="#">
-                  <div class="header">
+                  <div class="header" :class=" i === selected ? 'active' : '' ">
                     <div class="header-left">
                       <div class="user-top">
                         <img :src="contact.img" alt="">
@@ -76,7 +73,6 @@
                   </div>
                 </a>
               </li>
-
             </ul>
           </div>
       </aside>
@@ -84,55 +80,41 @@
       <main class="main-content">
         <div class="header pd-10">
           <div class="header-left">
-
             <a href="#">
               <div class="user-top">
-                  <img :src="contacts[selected].img" alt="">
+                <img :src="contacts[selected].img" alt="">
               </div>
             </a>
-
             <div class="label-left">
               <h3>{{contacts[selected].name}}</h3>
               <small class="grey">Ultimo accesso oggi alle {{contacts[selected].chat[contacts[selected].chat.length-1].date}}</small>
             </div>
           </div>
-
           <div class="header-right">
             <a href="#"><i class="fas fa-search"></i></a>
             <a href="#"><i class="fas fa-paperclip"></i></a>
             <a href="#"><i class="fas fa-ellipsis-v"></i></a>
           </div>
         </div>
-
         <!-- Content Chat -->
         <div class="content-chat">
-
           <div v-for="message in contacts[selected].chat" :class="message.status==='out' ? 'sent' : 'received'">
-
             <div class="message">
-
               <div class="msg-text">
                 {{message.message}}
               </div>
-
               <div class="msg-time">
                 {{message.date}}
               </div>
-
             </div>
-
           </div>
-
-          </div>
-
+        </div>
         <!-- Footer -->
         <div class="footer-chat">
             <a href="#">
               <i class="far fa-smile grey"></i>
             </a>
-
             <input v-model="newMessage" @keypress.enter="pushMess" type="text" placeholder="Scrivi un messaggio">
-
             <a href="#">
               <i class="fas fa-microphone grey" @click="pushMess"></i>
             </a>

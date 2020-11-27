@@ -4,7 +4,9 @@ var app = new Vue({
   data: {
     newMessage: "",
     search: "",
+    showMe: true,
     selected: 0,
+    random: ["ok", "certo", "va bene", "ci puoi contare", "si", "no", "forse"],
     contacts: [
       {
         name: "Michele",
@@ -14,17 +16,19 @@ var app = new Vue({
          {
            message: 'Hai portato a spasso il cane?',
            date: "22/11/2020 15:9:27",
-           status: "out"
+           status: "out",
          },
          {
            message: 'Ricordati di dargli da mangiare',
            date: "22/11/2020 15:11:00",
-           status: "out"
+           status: "out",
+
          },
          {
            message: 'Tutto fatto!',
            date: "22/11/2020 15:19:54",
-           status: "in"
+           status: "in",
+
          },
          ]
       },
@@ -36,17 +40,20 @@ var app = new Vue({
           {
             message: "Ciao come stai?",
             date: "25/11/2020 21:9:32",
-            status: "out"
+            status: "out",
+
           },
           {
             message: 'Bene grazie! Stasera ci vediamo?',
             date: "25/11/2020 21:11:27",
-            status: "in"
+            status: "in",
+
           },
           {
             message: "Non posso, ho troppi impegni",
             date: "25/11/2020 21:12:16",
-            status: "out"
+            status: "out",
+
           }
           ]
       },
@@ -58,17 +65,20 @@ var app = new Vue({
            {
              message: "La Marianna va in campagna?",
              date: "18/11/2020 18:9:27",
-             status: "out"
+             status: "out",
+
            },
            {
              message: 'Sicuro di non aver sbagliato chat?',
              date: "18/11/2020 20:34:05",
-             status: "in"
+             status: "in",
+
            },
            {
              message: "Ah scusa!",
              date: "18/11/2020 20:35:00",
-             status: "out"
+             status: "out",
+
            }
            ]
         },
@@ -80,12 +90,14 @@ var app = new Vue({
             {
               message: "Lo sai che ha aperto una nuova pizzeria?",
               date: "14/11/2020 11:56:10",
-              status: "out"
+              status: "out",
+
             },
             {
               message: 'Si, ma preferirei andare al cinema',
               date: "14/11/2020 12:40:22",
-              status: "in"
+              status: "in",
+
             },
           ]
         }
@@ -113,8 +125,13 @@ var app = new Vue({
 
     //funzione che restituisce una risposta automatica ad un nuovo messaggio
     autoReply: function() {
-      let message ={message: "ok", date:this.dataTime (), status: "in"};
+      let message ={message: this.randomAnswers(this.random), date:this.dataTime (), status: "in"};
       this.contacts[this.selected].chat.push(message);
+    },
+
+    //funzione che mi genera risposte random
+    randomAnswers: function (random) {
+      return random[Math.floor(Math.random() * random.length)];
     },
 
     //funzione per mettere in cima alla lista l'ultima chat utilizzata
@@ -142,7 +159,8 @@ var app = new Vue({
       let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       let dateTime = date+' '+time;
       return dateTime;
-    }
+    },
+
   },
 
   //scroll automatico ad ogni nuovo messaggio
