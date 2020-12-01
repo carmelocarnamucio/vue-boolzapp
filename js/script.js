@@ -12,23 +12,25 @@ var app = new Vue({
         name: "Michele",
         img: "img/avatar_1.jpg",
         visible: true,
+        lastOnline: "22/11/2020 15:19:54",
         chat: [
          {
-           message: 'Hai portato a spasso il cane?',
-           date: "22/11/2020 15:9:27",
-           status: "out",
+            message: 'Hai portato a spasso il cane?',
+            date: "22/11/2020 15:9:27",
+            status: "out",
+            dropdown: false,
          },
          {
-           message: 'Ricordati di dargli da mangiare',
-           date: "22/11/2020 15:11:00",
-           status: "out",
-
+            message: 'Ricordati di dargli da mangiare',
+            date: "22/11/2020 15:11:00",
+            status: "out",
+            dropdown: false,
          },
          {
-           message: 'Tutto fatto!',
-           date: "22/11/2020 15:19:54",
-           status: "in",
-
+            message: 'Tutto fatto!',
+            date: "22/11/2020 15:19:54",
+            status: "in",
+            dropdown: false,
          },
          ]
       },
@@ -36,68 +38,71 @@ var app = new Vue({
         name: "Fabio",
         img: "img/avatar_2.jpg",
         visible: true,
+        lastOnline: "25/11/2020 21:11:27",
         chat: [
           {
             message: "Ciao come stai?",
             date: "25/11/2020 21:9:32",
             status: "out",
-
+            dropdown: false
           },
           {
             message: 'Bene grazie! Stasera ci vediamo?',
             date: "25/11/2020 21:11:27",
             status: "in",
-
+            dropdown: false
           },
           {
             message: "Non posso, ho troppi impegni",
             date: "25/11/2020 21:12:16",
             status: "out",
-
-          }
+            dropdown: false
+          },
           ]
       },
       {
         name: "Samuele",
         img: "img/avatar_3.jpg",
         visible: true,
+        lastOnline: "18/11/2020 20:34:05",
         chat: [
            {
-             message: "La Marianna va in campagna?",
-             date: "18/11/2020 18:9:27",
-             status: "out",
-
+              message: "La Marianna va in campagna?",
+              date: "18/11/2020 18:9:27",
+              status: "out",
+              dropdown: false
            },
            {
-             message: 'Sicuro di non aver sbagliato chat?',
-             date: "18/11/2020 20:34:05",
-             status: "in",
-
+              message: 'Sicuro di non aver sbagliato chat?',
+              date: "18/11/2020 20:34:05",
+              status: "in",
+              dropdown: false
            },
            {
-             message: "Ah scusa!",
-             date: "18/11/2020 20:35:00",
-             status: "out",
-
-           }
+              message: "Ah scusa!",
+              date: "18/11/2020 20:35:00",
+              status: "out",
+              dropdown: false
+           },
            ]
         },
         {
           name: "Luisa",
           img: "img/avatar_6.jpg",
           visible: true,
+          lastOnline: "14/11/2020 12:40:22",
           chat: [
             {
               message: "Lo sai che ha aperto una nuova pizzeria?",
               date: "14/11/2020 11:56:10",
               status: "out",
-
+              dropdown: false
             },
             {
               message: 'Si, ma preferirei andare al cinema',
               date: "14/11/2020 12:40:22",
               status: "in",
-
+              dropdown: false
             },
           ]
         }
@@ -114,7 +119,7 @@ var app = new Vue({
     //funzione che pusha un nuovo messaggio nella chat selezionata
     pushMess: function() {
       if (this.newMessage != "") {
-        let messageNew = {message: this.newMessage, date: this.dataTime (), status: "out"};
+        let messageNew = {message: this.newMessage, date: this.dataTime (), status: "out", dropdown: false};
         this.contacts[this.selected].chat.push(messageNew);
         this.newMessage = "";
         setTimeout(this.autoReply, 1000);
@@ -125,8 +130,9 @@ var app = new Vue({
 
     //funzione che restituisce una risposta automatica ad un nuovo messaggio
     autoReply: function() {
-      let message ={message: this.randomAnswers(this.random), date:this.dataTime (), status: "in"};
+      let message ={message: this.randomAnswers(this.random), date:this.dataTime (), status: "in", dropdown: false};
       this.contacts[this.selected].chat.push(message);
+      this.lastTime();
     },
 
     //funzione che mi genera risposte random
@@ -161,6 +167,26 @@ var app = new Vue({
       return dateTime;
     },
 
+    //funzione per far apparire e sparire opzione cancella messaggio
+    dropDown: function(i) {
+      let message = this.contacts[this.selected].chat[i];
+      if (message.dropdown === false) {
+        message.dropdown = true;
+      } else {
+        message.dropdown = false;
+      }
+    },
+
+    //funzione per cancellare messaggi della chat
+    removeMessage: function (i) {
+      this.contacts[this.selected].chat.splice(i, 1);
+    },
+
+    // Funzione per salvare ultimo accesso
+    lastTime: function() {
+      this.contacts[this.selected].lastOnline = this.contacts[this.selected].chat[this.contacts[this.selected].chat.length-1].date
+    },
+
   },
 
   //scroll automatico ad ogni nuovo messaggio
@@ -168,5 +194,6 @@ var app = new Vue({
     let container = document.querySelector(".content-chat");
     let scrollHeight = container.scrollHeight;
     container.scrollTop = scrollHeight;
-  }
+  },
+
 })

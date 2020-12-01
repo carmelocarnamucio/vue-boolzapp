@@ -96,7 +96,7 @@ aside {
   background: #eaeaea;
 }
 
-/* Main content*/
+/* Main content */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -268,4 +268,38 @@ aside .chat-list {
   border-radius: 5px;
   border: none;
   outline: none;
+}
+
+.received .arrow, .sent .arrow {
+  visibility: hidden;
+  font-size: 1em;
+  margin: 0 2px;
+}
+
+.received:hover .arrow , .sent:hover .arrow {
+  cursor: pointer;
+  visibility: visible;
+  font-size: 1.1em;
+  margin: 0 2px;
+  color: grey;
+}
+
+/* DropDown */
+.drop-down {
+  background-color: #d7d7d7;
+  display: none;
+  padding: 5px;
+  width: 190px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.drop-down span {
+  font-size: .8em;
+  cursor: pointer;
+}
+
+.drop-downopen {
+  display: inline-block;
 }

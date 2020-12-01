@@ -62,12 +62,13 @@
                       <div class="user-top">
                         <img :src="contact.img" alt="">
                       </div>
-                      <div class="label-left">
+                      <div class="label-left" v-if="contact.chat.length >= 1">
                         <h4>{{contact.name}}</h4>
                         <p>{{contact.chat[contact.chat.length-1].message}}</p>
                       </div>
+
                     </div>
-                    <div class="prev-time">
+                    <div class="prev-time" v-if="contact.chat.length >= 1">
                       {{contact.chat[contact.chat.length-1].date}}
                     </div>
                   </div>
@@ -79,7 +80,7 @@
       <!-- Main Chat -->
       <main class="main-content">
         <div class="header pd-10">
-          <div class="header-left">
+          <div class="header-left" v-for="(contact,i) in contacts" v-if="i == selected">
             <a href="#">
               <div class="user-top">
                 <img :src="contacts[selected].img" alt="">
@@ -87,7 +88,7 @@
             </a>
             <div class="label-left">
               <h3>{{contacts[selected].name}}</h3>
-              <small class="grey">Ultimo accesso oggi alle {{contacts[selected].chat[contacts[selected].chat.length-1].date}}</small>
+              <small class="grey">Ultimo accesso oggi alle {{contacts[selected].lastOnline}}</small>
             </div>
           </div>
           <div class="header-right">
@@ -98,26 +99,30 @@
         </div>
         <!-- Content Chat -->
         <div class="content-chat">
-          <div v-for="message in contacts[selected].chat" :class="message.status==='out' ? 'sent' : 'received'">
+          <div v-for="(message, i) in contacts[selected].chat" :class="message.status==='out' ? 'sent' : 'received'">
             <div class="message">
               <div class="msg-text">
                 {{message.message}}
+                <i class="fas fa-chevron-down arrow" @click="dropDown(i)"></i>
               </div>
               <div class="msg-time">
                 {{message.date}}
+              </div>
+              <div class="drop-down" :class="message.dropdown ? 'drop-downopen' : '' ">
+                <span @click="removeMessage(i)">Cancella messaggio</span>
               </div>
             </div>
           </div>
         </div>
         <!-- Footer -->
         <div class="footer-chat">
-            <a href="#">
-              <i class="far fa-smile grey"></i>
-            </a>
-            <input v-model="newMessage" @keypress.enter="pushMess" type="text" placeholder="Scrivi un messaggio">
-            <a href="#">
-              <i class="fas fa-microphone grey" @click="pushMess"></i>
-            </a>
+          <a href="#">
+            <i class="far fa-smile grey"></i>
+          </a>
+          <input v-model="newMessage" @keypress.enter="pushMess" type="text" placeholder="Scrivi un messaggio">
+          <a href="#">
+            <i class="fas fa-microphone grey" @click="pushMess"></i>
+          </a>
         </div>
       </main>
     </div>
