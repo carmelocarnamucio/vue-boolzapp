@@ -289,7 +289,7 @@ aside .chat-list {
   background-color: #d7d7d7;
   display: none;
   padding: 5px;
-  width: 190px;
+  width: 100%;
   border-radius: 5px;
   text-align: center;
   margin-top: 15px;
